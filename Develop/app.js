@@ -16,67 +16,67 @@ const render = require("./lib/htmlRenderer");
 // function to initialize program
 
 
-function promptUser() {
+function init() {
     inquirer.prompt([
-            {
-                type: "input",
-                message: "What is your manager's name?",
-                name: "name",
-            },
-            {
-                type: "input",
-                message: "What is your manager's id?",
-                name: "id",
-            },
-            {
-                type: "input",
-                message: "What is your manager's email?",
-                name: "email",
-            },
-            {
-                type: "input",
-                message: "What is your manager's office number?",
-                name: "officeNum",
-            },
-            {
-                type: "list",
-                message: "What type of team member would you like to add?",
-                name: "type",
-                choices: ["Engineer", "Intern", "I don't want to add anymore team members"]
-            },
-            
-        ])
-        .then(function(memberType){
+        {
+            type: "input",
+            message: "What is your manager's name?",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "What is your manager's id?",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What is your manager's email?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "What is your manager's office number?",
+            name: "officeNum",
+        },
+        {
+            type: "list",
+            message: "What type of team member would you like to add?",
+            name: "type",
+            choices: ["Engineer", "Intern", "I don't want to add anymore team members"]
+        },
 
-            if(memberType==="Intern"){
+    ])
+        .then(function (memberType) {
+
+            if (memberType === "Intern") {
                 inquirer.prompt([
-                    
-            {
-                type: "input",
-                message: "What is your intern's name?",
-                name: "name",
-            },
-            {
-                type: "input",
-                message: "What is your intern's id?",
-                name: "id",
-                
-            },
-            {
-                type: "input",
-                message: "What is your intern's email address?",
-                name: "email",
-                //default: "npm i"
-            },
-            {
-                type: "input",
-                message: "What is your intern's school?",
-                name: "school",
-            },      
+
+                    {
+                        type: "input",
+                        message: "What is your intern's name?",
+                        name: "name",
+                    },
+                    {
+                        type: "input",
+                        message: "What is your intern's id?",
+                        name: "id",
+
+                    },
+                    {
+                        type: "input",
+                        message: "What is your intern's email address?",
+                        name: "email",
+                        //default: "npm i"
+                    },
+                    {
+                        type: "input",
+                        message: "What is your intern's school?",
+                        name: "school",
+                    },
 
                 ])
 
-            }else if(memberType==="Engineer"){
+            } else if (memberType === "Engineer") {
                 inquirer.prompt([
                     {
                         type: "input",
@@ -99,24 +99,26 @@ function promptUser() {
                         type: "input",
                         message: "What the Engineer's Github?",
                         name: "school",
-                    }, 
+                    },
 
                 ])
             }
-            }
-        
-        .then (function(answers) {
-            // Use user feedback for... whatever!!
-            console.log("Success!")
-            //answers.license = encodeURI(answers.license)
-           // writeToFile(`${answers.title}.md`, answers)
         }
-        )};        
 
+            .then(function (answers) {
+                // Use user feedback for... whatever!!
+                console.log("Success!")
+                //answers.license = encodeURI(answers.license)
+                // writeToFile(`${answers.title}.md`, answers)
+            })
+        )};
+
+
+    
 
 
 // function call to initialize program
-promptUser();
+init();
 
 
 // After the user has input all employees desired, call the `render` function (required
