@@ -17,7 +17,7 @@ const render = require("./lib/htmlRenderer");
 
 
 function init() {
-    inquirer.prompt([
+    var data=inquirer.prompt([
         {
             type: "input",
             message: "What is your manager's name?",
@@ -41,30 +41,47 @@ function init() {
         {
             type: "list",
             message: "What type of team member would you like to add?",
-            name: "type",
+            name: "role",
             choices: ["Engineer", "Intern", "I don't want to add anymore team members"]
         },
-        {
-            type: "input",
-            message: "What is your intern's name?",
-            name: "name",
-        },
-        {
-            type: "input",
-            message: "What is your intern's id?",
-            name: "id",
+    ])
+.then (function internPrompt(data){
 
-        },
-        {
-            type: "input",
-            message: "What is your intern's email address?",
-            name: "email",
-        },
-        {
-            type: "input",
-            message: "What is your intern's school?",
-            name: "school",
-        },
+    if(data.role==="Intern"){
+        var data=inquirer.prompt([
+            {
+                type: "input",
+                message: "What is your intern's name?",
+                name: "name",
+            },
+            {
+                type: "input",
+                message: "What is your intern's id?",
+                name: "id",
+    
+            },
+            {
+                type: "input",
+                message: "What is your intern's email address?",
+                name: "email",
+            },
+            {
+                type: "input",
+                message: "What is your intern's school?",
+                name: "school",
+            },
+            {
+                type: "list",
+                message: "What type of team member would you like to add?",
+                name: "role",
+                choices: ["Engineer", "Intern", "I don't want to add anymore team members"]
+            },
+
+        ])
+
+    } else if (data.role==="Engineer"){
+        var data=inquirer.prompt([
+                    
         {
             type: "input",
             message: "What is your Engineer's name?",
@@ -86,18 +103,28 @@ function init() {
             message: "What is the Engineer's Github?",
             name: "github",
         },
+        {
+            type: "list",
+            message: "What type of team member would you like to add?",
+            name: "role",
+            choices: ["Engineer", "Intern", "I don't want to add anymore team members"]
+        },
 
 
-    ])
-            .then(function (answers) {
-                // Use user feedback for... whatever!!
+        ])
+            .then(function repeatAnswers(data) {
+              if(data.role !=="I don't want to add anymore team members"){
+                  internPrompt();
+              } else {
+                
                 console.log("Success!")
-                //answers.license = encodeURI(answers.license)
-                // writeToFile(`${answers.title}.md`, answers)
-            })
-        
-};
+              }
+                
+            })      
 
+    }
+})
+}
 
 // function call to initialize program
 init();
@@ -121,4 +148,5 @@ init();
 // and Intern classes should all extend from a class named Employee; see the directions
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+// for the provided `render` function to work! ``
+    
