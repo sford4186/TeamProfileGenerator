@@ -36,7 +36,7 @@ function init() {
         {
             type: "input",
             message: "What is your manager's office number?",
-            name: "officeNum",
+            name: "officeNumber",
         },
         {
             type: "list",
@@ -44,77 +44,59 @@ function init() {
             name: "type",
             choices: ["Engineer", "Intern", "I don't want to add anymore team members"]
         },
+        {
+            type: "input",
+            message: "What is your intern's name?",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "What is your intern's id?",
+            name: "id",
+
+        },
+        {
+            type: "input",
+            message: "What is your intern's email address?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "What is your intern's school?",
+            name: "school",
+        },
+        {
+            type: "input",
+            message: "What is your Engineer's name?",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's id?",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's email address?",
+            name: "email",
+            
+        },
+        {
+            type: "input",
+            message: "What is the Engineer's Github?",
+            name: "github",
+        },
+
 
     ])
-        .then(function (memberType) {
-
-            if (memberType === "Intern") {
-                inquirer.prompt([
-
-                    {
-                        type: "input",
-                        message: "What is your intern's name?",
-                        name: "name",
-                    },
-                    {
-                        type: "input",
-                        message: "What is your intern's id?",
-                        name: "id",
-
-                    },
-                    {
-                        type: "input",
-                        message: "What is your intern's email address?",
-                        name: "email",
-                        //default: "npm i"
-                    },
-                    {
-                        type: "input",
-                        message: "What is your intern's school?",
-                        name: "school",
-                    },
-
-                ])
-
-            } else if (memberType === "Engineer") {
-                inquirer.prompt([
-                    {
-                        type: "input",
-                        message: "What is your Engineer's name?",
-                        name: "name",
-                    },
-                    {
-                        type: "input",
-                        message: "What is the Engineer's id?",
-                        name: "id",
-                        //default: "npm test"
-                    },
-                    {
-                        type: "input",
-                        message: "What is the Engineer's email address?",
-                        name: "email",
-                        //default: "npm i"
-                    },
-                    {
-                        type: "input",
-                        message: "What the Engineer's Github?",
-                        name: "school",
-                    },
-
-                ])
-            }
-        }
-
             .then(function (answers) {
                 // Use user feedback for... whatever!!
                 console.log("Success!")
                 //answers.license = encodeURI(answers.license)
                 // writeToFile(`${answers.title}.md`, answers)
             })
-        )};
-
-
-    
+        
+};
 
 
 // function call to initialize program
