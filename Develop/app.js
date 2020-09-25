@@ -45,7 +45,7 @@ const makeIntern = () => {
     })
 }
 const makeTeam = () => {
-    console.log('made it')
+    console.log('Success!')
     if (fs.existsSync(OUTPUT_DIR) === false) {
         fs.mkdir(OUTPUT_DIR, err=>{
             if(err) throw err
